@@ -1,0 +1,22 @@
+<div class="staff">
+  <div class="staff-row staff-row__header">
+    <div class="staff-col w10">ID</div>
+    <div class="staff-col w30">Name</div>
+    <div class="staff-col w20">Position</div>
+    <div class="staff-col w10">Age</div>
+    <div class="staff-col w20">Date of employment</div>
+    <div class="staff-col w10"></div>
+  </div>
+  <div *ngFor="let person of staff; let idx = index; trackBy: trackByMethod" class="staff-row">
+    <div class="staff-col w10">{{person.id}}</div>
+    <div class="staff-col w30">{{person.name}}</div>
+    <div class="staff-col w20">{{person.position}}</div>
+    <div class="staff-col w10">{{person.age}}</div>
+    <div class="staff-col w20">{{person.date | date: 'MM/dd/yyyy'}}</div>
+    <div class="staff-col w10">
+      <button matTooltip="Edit" mat-icon-button color="primary" aria-label="Edit" (click)="edit.emit(idx)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

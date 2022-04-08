@@ -1,0 +1,29 @@
+<div class="person-form" [formGroup]="personForm">
+  <p class="person-form__title">{{ editMode ? 'Edit person' : 'Add person' }}</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" aria-label="Name" >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Position</mat-label>
+    <input matInput formControlName="position" aria-label="Position" >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Age</mat-label>
+    <input type="number" matInput formControlName="age" aria-label="Age" >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Date of employment</mat-label>
+    <input matInput [matDatepicker]="tt" aria-label="Date" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="tt"></mat-datepicker-toggle>
+    <mat-datepicker #tt></mat-datepicker>
+  </mat-form-field>
+  <button type="button"
+          mat-flat-button color="primary"
+          [style.margin-right.px]="10"
+          [disabled]="!personForm.valid"
+          (click)="editPerson()">
+    {{ editMode ? 'Save' : 'Add'}}
+  </button>
+  <button type="button" mat-flat-button color="accent" (click)="clearForm()">Cancel</button>
+</div>

@@ -1,0 +1,31 @@
+<div class="content pt20px center">
+  <div class="content-col wrapper">
+    <div class="search">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Search</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput [formControl]="inputValueControl" aria-label="Search">
+      </mat-form-field>
+    </div>
+    <div *ngIf="isLoading" class="center">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+    <div *ngIf="!isLoading && repos.length" class="result">
+      <div class="result-card" *ngFor="let item of repos">
+        <div class="result-card__img">
+          <img [src]="item.owner.avatar_url" [alt]="item.name">
+        </div>
+        <div class="result-card__body">
+          <p class="result-card__body-title" (click)="goToLink(item.owner.html_url)">{{item.name}}</p>
+          <p class="result-card__body-text">{{ (item.description | slice:0:35) + (item.description.length > 35 ? '...' : '')}}</p>
+          <div class="result-card__body-stats">
+            <div class="stat"><mat-icon inline="true">star</mat-icon>{{item.stargazers_count}}</div>
+            <div class="stat"><mat-icon inline="true">download</mat-icon>{{item.forks_count}}</div>
+            <div class="stat"><mat-icon inline="true">visibility</mat-icon>{{item.watchers_count}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-paginator *ngIf="!isLoading && repos.length" [currentPage]="currentPage" (changePage)="changePage($event)"></app-paginator>
+  </div>
+</div>

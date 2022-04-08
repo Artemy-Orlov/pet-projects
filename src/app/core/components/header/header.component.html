@@ -1,0 +1,8 @@
+<div class="head-left">
+  <app-user *ngIf="isAuthenticated"></app-user>
+</div>
+
+<div class="head-right">
+  <button *ngIf="isAuthenticated" mat-flat-button color="primary" (click)="onLogout()">Logout</button>
+</div>
+

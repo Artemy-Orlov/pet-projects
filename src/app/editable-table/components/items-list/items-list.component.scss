@@ -1,0 +1,13 @@
+.staff {
+  &-row {
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid #e7e7e7;
+
+    &__header {
+      font-weight: 600;
+    }
+  }
+}

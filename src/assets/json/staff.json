@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Oliver",
+    "position": "Auditor",
+    "age": 36,
+    "date": "2005-03-14T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Jack",
+    "position": "Builder",
+    "age": 28,
+    "date": "1998-09-21T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Harry",
+    "position": "CEO",
+    "age": 24,
+    "date": "2001-01-02T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Charley",
+    "position": "Director",
+    "age": 32,
+    "date": "2010-12-14T00:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "name": "Thomas",
+    "position": "Guard",
+    "age": 21,
+    "date": "2007-07-07T00:00:00.000Z"
+  }
+]

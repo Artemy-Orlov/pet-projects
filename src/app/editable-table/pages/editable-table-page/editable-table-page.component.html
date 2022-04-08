@@ -1,0 +1,18 @@
+<div class="content pt20px">
+  <div class="content-col w60">
+    <div class="content-header">
+      <div class="content-header__title">Editable table of staff</div>
+    </div>
+    <div class="content-body">
+      <div class="content-body__empty" *ngIf="!staff.length">
+        No staff
+      </div>
+      <div class="content-body__table" *ngIf="staff.length">
+        <app-items-list [staff]="staff" (edit)="editItem($event)"></app-items-list>
+      </div>
+    </div>
+  </div>
+  <div class="content-col w40">
+    <app-item-edit [personForEdit]="person" (personToTable)="addPersonToTable($event)"></app-item-edit>
+  </div>
+</div>

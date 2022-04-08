@@ -1,0 +1,65 @@
+.currency {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-box {
+    width: 50%;
+    height: 300px;
+    display: block;
+    padding: 30px;
+    color: #fff;
+
+    &__title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    &__select {
+      max-width: 100px;
+    }
+    &__input {
+      margin-right: 20px;
+      ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before {
+        background-color: #c7c7c7;
+      }
+      input {
+        font-size: 50px;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        &[type=number] {
+          -moz-appearance: textfield;
+        }
+      }
+    }
+
+    &-l {
+      border-radius: 5px 0 0 5px;
+      background-image: linear-gradient(to bottom, #2a3042, #58688a);
+    }
+
+    &-r {
+      padding-top: 48px;
+      border-radius: 0 5px 5px 0;
+      background-color: #58688a;
+    }
+
+    &__result {
+      width: 201px;
+      height: 90px;
+      font-size: 50px;
+      line-height: 50px;
+      margin-right: 20px;
+      overflow: hidden;
+      border-radius: 4px 4px 0 0;
+      padding: 26px 10px 15px 10px;
+      background-color: rgba(255,255,255,.1);
+      border-bottom: 1px solid rgba(255,255,255,.5);
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<div class="content pt20px center">
+  <div class="content-col w60 currency">
+    <div class="currency-box currency-box-l">
+      <div class="currency-box__title">Currency converter</div>
+      <div class="content">
+        <div class="currency-box__input">
+          <mat-form-field appearance="fill">
+            <mat-label></mat-label>
+            <input type="number" matInput aria-label="from" [(ngModel)]="inputValue">
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill" class="currency-box__select">
+          <mat-label>From</mat-label>
+          <mat-select [(ngModel)]="baseCurrency" (selectionChange)="resetConvertList($event)" (openedChange)="setOldCurrency()">
+            <mat-option *ngFor="let item of currencyList" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button type="button" mat-flat-button color="primary" (click)="getRate()">Convert</button>
+    </div>
+    <div class="currency-box currency-box-r">
+      <p class="currency-box__result-message">{{rateMessage}}&nbsp;</p>
+      <div class="content">
+        <div class="currency-box__result">
+          {{result}}
+        </div>
+        <mat-form-field color="accent" appearance="fill" class="currency-box__select">
+          <mat-label>From</mat-label>
+          <mat-select [(ngModel)]="convertCurrency" (selectionChange)="getRate()">
+            <mat-option *ngFor="let item of currencyListToConvert" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>

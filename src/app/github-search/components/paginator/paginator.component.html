@@ -1,0 +1,11 @@
+<div class="paginator">
+  <div class="paginator-arrow">
+    <button [disabled]="currentPage === 1" (click)="change('backward')" mat-icon-button color="primary" aria-label="Prev">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button (click)="change('forward')" mat-icon-button color="primary" aria-label="Next">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>
+

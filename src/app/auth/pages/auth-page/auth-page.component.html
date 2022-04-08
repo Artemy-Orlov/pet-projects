@@ -1,0 +1,56 @@
+<div class="content pt20px">
+  <div class="content-col w100 auth">
+    <div class="w40 auth-form">
+      <div class="center" *ngIf="isLoading">
+        <mat-spinner [diameter]="50"></mat-spinner>
+      </div>
+      <form *ngIf="!isLoading" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <p class="auth-form__title">{{ isLoginMode ? 'Login' : 'Register' }}</p>
+        <p class="auth-form__subtitle">{{ isLoginMode ? 'Sign Into Your Account' : 'Create An Cccount' }}</p>
+        <div class="auth-form__box">
+          <div class="auth-form__field">
+            <input class="auth-form__field-control"
+                   type="email"
+                   formControlName="email"
+                   placeholder="E-mail"
+                   aria-label="E-mail">
+            <mat-icon class="material-icons-outlined">mail_outline</mat-icon>
+          </div>
+          <div *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched"
+               class="auth-form__box-error">
+            Please enter a valid email
+          </div>
+        </div>
+        <div class="auth-form__box">
+          <div class="auth-form__field">
+            <input class="auth-form__field-control"
+                   type="password"
+                   formControlName="password"
+                   placeholder="Password"
+                   aria-label="Password">
+            <mat-icon class="material-icons-outlined">key</mat-icon>
+          </div>
+          <div *ngIf="loginForm.get('password').touched && loginForm.controls.password.hasError('required')"
+               class="auth-form__box-error">
+            This is a required field
+          </div>
+          <div *ngIf="loginForm.get('password').touched && loginForm.controls.password.hasError('minlength') && !loginForm.controls.password.hasError('required')"
+               class="auth-form__box-error">
+            Minimum password length: {{loginForm.get('password').errors['minlength']['requiredLength']}} characters
+          </div>
+        </div>
+        <button type="submit" mat-flat-button color="primary" [disabled]="loginForm.invalid">
+          {{ isLoginMode ? 'Login' : 'Register' }}
+        </button>
+        <button type="button" mat-button color="accent" (click)="onChangeMode()">
+          {{ isLoginMode ? 'Register' : 'Authorization' }}
+        </button>
+      </form>
+      <div class="auth-form__separator"></div>
+      <div class="auth-form__description">
+        <p>For successful authorization and access to sections, please enter:<br/>login "admin@email.com", password "administrator".</p>
+        <p>To demonstrate the restriction of access through canActivate, a guard was added for the Currency route.</p>
+      </div>
+    </div>
+  </div>
+</div>
