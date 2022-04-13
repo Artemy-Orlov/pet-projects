@@ -1,4 +1,4 @@
-<div class="user" *ngIf="user$ | async as user">
+<div class="user" *ngIf="(user$ | async) as user">
   <div class="user-avatar">
     <img [src]="user.avatar" />
   </div>

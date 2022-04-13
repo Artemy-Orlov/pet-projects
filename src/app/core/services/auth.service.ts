@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, of} from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { UserModel } from '../models/user.model';
 
-interface AuthFormValue {
+interface IAuthFormValue {
   email: string;
   password: string;
 }
@@ -18,21 +18,19 @@ export class AuthService {
     password: environment.password
   };
 
-  userSbj: Subject<UserModel> = new Subject<UserModel>();
+  userSbj: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>(this.user);
   user$: Observable<UserModel> = this.userSbj.asObservable();
 
   isAuthenticatedSbj: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isAuthenticated$: Observable<boolean> = this.isAuthenticatedSbj.asObservable();
 
-  login(formData: AuthFormValue): Observable<boolean> {
+  login(formData: IAuthFormValue): Observable<boolean> {
     const isAuth = formData.email === this.user.login && formData.password === this.user.password;
     this.isAuthenticatedSbj.next(isAuth);
-    this.userSbj.next(this.user);
     return of(isAuth);
   }
 
   logout(): void {
     this.isAuthenticatedSbj.next(false);
-    this.userSbj.next();
   }
 }

@@ -1,0 +1,36 @@
+<div class="content pt20px">
+  <div class="content-col w100" *ngIf="kanban; else loader">
+    <div class="content-header">
+      <div class="content-header__title">
+        {{kanban.name}}
+        <button class="btn" matTooltip="Add task" mat-mini-fab color="primary" aria-label="Add task" (click)="openEditDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="content-body kanban">
+      <div class="kanban-columns" cdkDropListGroup>
+        <div class="kanban-col" *ngFor="let column of kanban.columns; let iColumn = index;">
+          <div class="kanban-col__title">
+            {{column.name}}
+          </div>
+          <div class="kanban-col__task-wrapper"
+               cdkDropList
+               [cdkDropListData]="column.tasks"
+               (cdkDropListDropped)="drop($event)">
+            <div class="task" *ngFor="let task of column.tasks; let iTask = index;" cdkDrag>
+              <p class="task__title" (click)="openEditDialog(task, iTask, iColumn, (kanban.columns.length - 1) !== iColumn ? kanban.columns[iColumn+1].name : null)">{{task.name}}</p>
+              <p class="task__description">{{(task.description | slice:0:60) + (task.description.length > 60 ? '...' : '')}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loader>
+    <div class="center" [style.width.%]="100">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+  </ng-template>
+</div>

@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule) },
   { path: 'currency', loadChildren: () => import('./currency/currency.module').then((m) => m.CurrencyModule) },
   { path: 'editable-table', loadChildren: () => import('./editable-table/editable-table.module').then((m) => m.EditableTableModule) },
-  { path: 'github-search', loadChildren: () => import('./github-search/github-search.module').then((m) => m.GithubSearchModule) }
+  { path: 'github-search', loadChildren: () => import('./github-search/github-search.module').then((m) => m.GithubSearchModule) },
+  { path: 'kanban', loadChildren: () => import('./kanban/kanban.module').then((m) => m.KanbanModule) }
 ];
 
 @NgModule({

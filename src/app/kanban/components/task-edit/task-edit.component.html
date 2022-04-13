@@ -1,0 +1,31 @@
+<div class="task-form" [formGroup]="taskForm">
+  <p class="task-form__title">{{ editMode ? 'Edit task' : 'Add task' }}</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" aria-label="Name" >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description" aria-label="Description"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Comment</mat-label>
+    <textarea matInput formControlName="comment" aria-label="Comment"></textarea>
+  </mat-form-field>
+  <button type="button"
+          mat-flat-button color="primary"
+          [style.margin-right.px]="10"
+          [disabled]="!taskForm.valid"
+          (click)="save(false)">
+    {{ editMode ? 'Edit' : 'Save'}}
+  </button>
+  <button *ngIf="editMode && data.nextStep"
+          type="button"
+          mat-flat-button color="primary"
+          [style.margin-right.px]="10"
+          [disabled]="!taskForm.valid"
+          (click)="save(true)">
+    Move to {{ data.nextStep }}
+  </button>
+  <button type="button" mat-flat-button color="accent" (click)="cancel()">Cancel</button>
+</div>
